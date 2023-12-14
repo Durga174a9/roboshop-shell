@@ -8,11 +8,11 @@ log_file_path=/tmp/$0-$time.log
 
 echo "script started at $time " &>>log_file_path
 
-if [[ $ID -ne 0 ]]
+if [ $ID -ne 0 ]
 then
     echo "Mate you need to have root access, Permission Denied"
 else
-    echo "Permission Denied"
+    echo "You have access to install"
 fi
 
 validate(){
