@@ -31,7 +31,7 @@ dnf module enable nodejs:18 -y &>>log_file_path
 
 validate $? "enabling defalult version of nodejs"
 
-which nodejs
+which nodejs &>>log_file_path
 
 if [ $? -ne 0 ]
 then
@@ -41,9 +41,9 @@ else
     echo "nodejs already installed"
 fi
 
-id roboshop
+id roboshop &>>log_file_path
 
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then
     useradd roboshop &>>log_file_path
     validate $? "adding user roboshop"
@@ -57,13 +57,13 @@ validate $? "creating /app dir"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>log_file_path
 
-cd /app
+cd /home/centos/roboshop-shell/app
 
 unzip -o /tmp/catalogue.zip &>>log_file_path
 
 npm install &>>log_file_path
 
-cp /roboshop-shell/service.catalouge /etc/systemd/system/catalogue.service
+cp home/centos/roboshop-shell/service.catalouge /etc/systemd/system/catalogue.service
 
 validate $? "copying service file"
 
@@ -79,7 +79,7 @@ systemctl start catalogue &>>log_file_path
 
 validate $? "starting catalogue"
 
-yum mongorepo etc/yum.repos.d/mongo.repo 
+yum home/centos/roboshop-shell/mongorepo etc/yum.repos.d/mongo.repo 
 
 validate $? "copying mongorepo to etc/yum.repos.d/mongo.repo"
 
@@ -87,7 +87,7 @@ dnf install mongodb-org-shell -y &>>log_file_path
 
 validate $? " insatlling mongo-shell "
 
-mongo --host 54.152.150.133 </app/schema/catalogue.js &>>log_file_path
+mongo --host 54.152.150.133 <./app/schema/catalogue.js &>>log_file_path
 
 
 
