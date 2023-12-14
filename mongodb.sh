@@ -25,7 +25,7 @@ validate(){
     fi
 }
 
-cp ./mongo.repo /etc/yum.repos.d/mongo.repo
+cp ./mongorepo /etc/yum.repos.d/mongo.repo
 
 validate $? "Copied file to /etc/yum.repos.d/mongo.repo"
 
