@@ -4,7 +4,7 @@ ID=$(id -u)
 
 time=$(date +%d-%H-%M)
 
-log_file_path=$(/tem/$0-$(time))
+log_file_path=/tmp/$0-$time.log
 
 echo "script started at $time " &>>log_file_path
 
