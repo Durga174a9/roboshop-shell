@@ -41,7 +41,7 @@ systemctl start mongod &>>log_file_path
 
 validate $? "starting mongodb"
 
-sed 's/127.0.0.1/0.0.0.0/g' /etc/mongod.con &>>log_file_path
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf &>>log_file_path
 
 validate $? "editing /etc/mongodb file"
 
