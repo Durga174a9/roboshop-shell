@@ -1,5 +1,5 @@
 #!/bin/bash
-#hey there
+
 ID=$(id -u)
 
 time=$(date +%d-%H-%M)
