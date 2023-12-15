@@ -67,7 +67,7 @@ npm install &>>log_file_path
 
 validate $? "insatlling dependencies"
 
-cp home/centos/roboshop-shell/service.catalouge /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop-shell/service.catalouge /etc/systemd/system/catalogue.service
 
 validate $? "copying service file"
 
