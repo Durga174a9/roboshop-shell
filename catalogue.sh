@@ -91,7 +91,7 @@ dnf install mongodb-org-shell -y &>>log_file_path
 
 validate $? " insatlling mongo-shell "
 
-mongo --host 54.152.150.133 </app/schema/catalogue.js &>>log_file_path
+mongo --host mongodb.174a9.online </app/schema/catalogue.js &>>log_file_path
 
 validate $? "Loading catalouge data into mongodb"
 
