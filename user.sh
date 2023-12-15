@@ -59,7 +59,7 @@ unzip /tmp/user.zip &>>log_file_path
 
 validate $? "Unzipping code in /tmp/user.zip directory"
 
-cp /home/centos/roboshop-shell/roboshop-shell/service.user /etc/systemd/system/user.service &>>log_file_path
+cp /home/centos/roboshop-shell/service.user /etc/systemd/system/user.service &>>log_file_path
 
 validate $? "copying service.user to user.service"
 
