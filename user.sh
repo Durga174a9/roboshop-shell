@@ -79,10 +79,10 @@ cp /home/centos/roboshop-shell/mongorepo /etc/yum.repos.d/mongo.repo
 
 validate $? "copying mongo repo to yum.repo file"
 
-dnf install mongodb-org-shell -y
+dnf install mongodb-org-shell -y &>>log_file_path
 
 validate $? "installing mongodb-shell"
 
-mongo --host mongodb.174a9.online </app/schema/user.js
+mongo --host mongodb.174a9.online </app/schema/user.js &>>log_file_path
 
 validate $? "loading contents to mongodb"

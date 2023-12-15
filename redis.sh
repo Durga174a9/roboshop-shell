@@ -29,24 +29,23 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>log_fi
 
 validate $? "Installing redis repo's"
 
-dnf module enable redis:remi-6.2 -y
+dnf module enable redis:remi-6.2 -y &>>log_file_path
 
 validate $? "enabling redis version-6.2"
 
-dnf install redis -y
+dnf install redis -y &>>log_file_path
 
 validate $? "installing redis package"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf &>>log_file_path
 
 validate $? "changing ip to access all-request"
 
-systemctl enable redis
+systemctl enable redis &>>log_file_path
 
 validate $? " enabling redis service"
 
-systemctl start redis
+systemctl start redis &>>log_file_path
 
 validate $? " Starting redis service"
 
-validate $? " Starting redis service"
