@@ -83,7 +83,7 @@ systemctl start catalogue &>>log_file_path
 
 validate $? "starting catalogue"
 
-cp  home/centos/roboshop-shell/mongorepo /etc/yum.repos.d/mongo.repo 
+cp  /home/centos/roboshop-shell/mongorepo /etc/yum.repos.d/mongo.repo 
 
 validate $? "copying mongorepo to etc/yum.repos.d/mongo.repo"
 
