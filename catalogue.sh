@@ -51,17 +51,21 @@ else
     echo "user already exist"
 fi
 
-mkdir -p app &>>log_file_path
+mkdir -p /app 
 
 validate $? "creating /app dir"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>log_file_path
 
-cd /home/centos/roboshop-shell/app
+validate $? "Downloading catalogue application"
+
+cd /app
 
 unzip -o /tmp/catalogue.zip &>>log_file_path
 
 npm install &>>log_file_path
+
+validate $? "insatlling dependencies"
 
 cp home/centos/roboshop-shell/service.catalouge /etc/systemd/system/catalogue.service
 
@@ -79,7 +83,7 @@ systemctl start catalogue &>>log_file_path
 
 validate $? "starting catalogue"
 
-yum home/centos/roboshop-shell/mongorepo etc/yum.repos.d/mongo.repo 
+cp  home/centos/roboshop-shell/mongorepo /etc/yum.repos.d/mongo.repo 
 
 validate $? "copying mongorepo to etc/yum.repos.d/mongo.repo"
 
@@ -87,7 +91,9 @@ dnf install mongodb-org-shell -y &>>log_file_path
 
 validate $? " insatlling mongo-shell "
 
-mongo --host 54.152.150.133 <./app/schema/catalogue.js &>>log_file_path
+mongo --host 54.152.150.133 </app/schema/catalogue.js &>>log_file_path
+
+validate $? "Loading catalouge data into mongodb"
 
 
 
