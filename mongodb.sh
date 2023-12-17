@@ -25,7 +25,7 @@ validate(){
     fi
 }
 
-cp ./mongorepo /etc/yum.repos.d/mongo.repo
+cp home/centos/roboshop-shell/mongorepo /etc/yum.repos.d/mongo.repo
 
 validate $? "Copied file to /etc/yum.repos.d/mongo.repo"
 
