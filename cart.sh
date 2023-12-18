@@ -59,9 +59,9 @@ unzip -o /tmp/cart.zip &>>log_file_path
 
 validate $? "Unzipping code in /tmp/cart.zip directory"
 
-npm install  &>> $LOGFILE
+npm install  &>>log_file_path 
 
-VALIDATE $? "Installing dependencies"
+validate $? "Installing dependencies"
 
 cp /home/centos/roboshop-shell/service.cart /etc/systemd/system/cart.service &>>log_file_path
 
